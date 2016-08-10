@@ -10,7 +10,7 @@ int main() {
 
 	cin >> n >> m;
 
-	if (n == m) {
+	if (m % n == 0) {
 		cout << 0 << endl;
 	}
 	else if (n < m) {
