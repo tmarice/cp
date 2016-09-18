@@ -1,27 +1,29 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring>
+#include <cmath>
 
 using namespace std;
 
 #define MOD 1000000007
 typedef long long ll;
 
+bool check_key(char *c, ll len, ll key_len) {
+	bool ret = true;
+
+	for (int i = 1; i < len / key_len; ++i)
+		ret &= (memcmp(c, c + i*key_len, key_len) == 0);
+
+	return ret;
+}
 
 ll get_key_len(char *c, ll len) {
-	if (len % 2) {
-		for (ll i = 0; i < len - 1; ++i)
-			if (c[i] != c[i + 1])
-				return len;
-		return 1;
-	}
+	for (ll key_len = 1; key_len <= len/2; ++key_len)
+		if (len % key_len == 0)
+			if (check_key(c, len, key_len))
+				return key_len;
 
-	ll half = len / 2;
-
-	if (memcmp(c, c + half, half) == 0) 
-		return get_key_len(c, half);
-	else
-		return len;
+	return len;
 }
 
 
