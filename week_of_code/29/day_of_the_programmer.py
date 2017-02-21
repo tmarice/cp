@@ -12,4 +12,4 @@ elif y < 1918: # julian
     else:
         print "13.09.{0}".format(y)
 else: # 1918
-    print "25.09.{0}".format(y)
+    print "26.09.{0}".format(y)
