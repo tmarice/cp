@@ -33,7 +33,25 @@ a = [int(x) for x in raw_input().split()]
 
 primes = get_primes(q)
 
+bs = []
+
 for p in primes:
-    ai = []
-    for x in a:
-        if x % 
+    new_a = []
+
+    b = []
+    bs.append(b)
+
+    while a:
+        x = a.pop()
+        if x % p == 0:
+            b.append(x)
+        else:
+            new_a.append(x)
+
+    a = new_a
+
+bs.append(a)
+
+for stack in bs:
+    while stack:
+        print stack.pop()
