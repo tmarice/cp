@@ -14,7 +14,6 @@ cur_t = orders[0][1]
 waits = []
 i = 0
 
-import pdb; pdb.set_trace()
 while i < n or heap: 
 
     while i < n and (len(heap) == 0 or orders[i][1] <= cur_t):
