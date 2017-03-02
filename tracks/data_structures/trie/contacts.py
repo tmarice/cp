@@ -2,6 +2,7 @@ import sys
 
 
 class Node(object):
+    __slots__ = ['value', 'sum', 'links']
 
     def __init__(self, value=0):
         self.value = value
