@@ -21,7 +21,6 @@ for _ in range(t):
     cs = [int(x) for x in raw_input().split()]
     m = min(cs)
 
-    import pdb; pdb.set_trace()
     out = INF
     for base in range(0, 3):
         cur_out = 0
