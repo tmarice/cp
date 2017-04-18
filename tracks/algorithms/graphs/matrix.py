@@ -31,8 +31,9 @@ robots = set()
 for _ in range(k):
     x = int(raw_input())
     robots.add(x)
+    s = x
 
-visited = set([0])
-dfs(graph, robots, 0, None, INF)
+visited = set([s])
+dfs(graph, robots, s, None, INF)
 
 print out
