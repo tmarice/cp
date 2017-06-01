@@ -16,13 +16,12 @@ def find_max(graph):
 def bfs(n, m, graph):
     init_max = find_max(graph)
 
-    visited = set()
     q = deque()
     for i in xrange(n):
         for j in xrange(m):
             if graph[i][j] == init_max:
                 q.appendleft(((i, j), 0))
-                visited.add((i, j))
+                graph[i][j] = -1
 
     out = 0
     while q:
@@ -34,8 +33,8 @@ def bfs(n, m, graph):
             neigh_j = cur_j + x
 
             if neigh_i >= 0 and neigh_i < n and neigh_j >= 0 and neigh_j < m:
-                if (neigh_i, neigh_j) not in visited:
-                    visited.add((neigh_i, neigh_j))
+                if graph[neigh_i][neigh_j] != -1:
+                    graph[neigh_i][neigh_j] = -1
                     q.appendleft(((neigh_i, neigh_j), cur_m + 1))
 
     return out
