@@ -2,24 +2,30 @@
 
 
 def solve(n, houses):
-    n_first = sum(1 for c in houses[0] if c == "*")
-    n_second = sum(1 for c in houses[1] if c == "*")
+    ret = 1 if "*" in houses[0] and "*" in houses[1] else 0
 
-    ret = 1 if n_first and n_second else 0
+    n_first = 0
+    n_second = 0
 
     for i in range(n):
-        if n_first <= 1 and n_second <= 1:
-            break
-        if houses[0][i] == "*" and houses[1][i] == "*":
+        f_inc = False
+        s_inc = False
+
+        if houses[0][i] == "*":
+            n_first += 1
+            f_inc = True
+
+        if houses[1][i] == "*":
+            n_second += 1
+            s_inc = True
+
+        if n_first > 1 or n_second > 1:
             ret += 1
-            n_first -= 1
-            n_second -= 1
-        elif houses[0][i] == "*":
-            ret += 1
-            n_first -= 1
-        elif houses[1][i] == "*":
-            ret += 1
-            n_second -= 1
+
+            if n_first == 2 or not f_inc:
+                n_first = max(n_first-1, 0)
+            if n_second == 2 or not s_inc:
+                n_second = max(n_second-1, 0)
 
     return ret
 
