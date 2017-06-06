@@ -10,25 +10,31 @@ def main():
 
     for i in range(60):
         for j in range(60):
-            t = x ** i + y ** j
-            if t > r:
-                break
-            elif t >= l:
-                h.add(t)
-
+            t = s ** i + f ** j
+            h.add(t)
 
     lt = sorted(h)
+    check = []
 
-    out = 0
-    for i in range(len(lt)):
-        if i == 0:
-            d = lt[i] - l
-        elif i == len(lt) - 1:
-            d = r - lt[i]
-        else:
-            d = lt[i+1] - lt[i] - 1
+    for x in lt:
+        if x >= l and x <= r:
+            check.append(x)
 
-        out = max(out, d)
+    if len(check) == 0:
+        out = r - l + 1
+    elif len(check) == 1:
+        out = max(check[0] - l, r - check[0])
+    else:
+        out = 0
+        for i in range(len(check)):
+            if i == 0:
+                d = check[i] - l
+            elif i == len(check) - 1:
+                d = r - check[i]
+            else:
+                d = check[i+1] - check[i] - 1
+
+            out = max(out, d)
 
     print out
 
