@@ -9,8 +9,8 @@ def find(cumsums, start, end): # [start, end)
     ret_idx = start
 
     for i in range(start, end):
-        if cumsums[i] - (cumsums[end-1] - cumsums[i]) > ret:
-            ret = cumsums[i] - (cumsums[end-1] - cumsums[i])
+        if (cumsums[i] - cumsums[start])  - (cumsums[end-1] - cumsums[i]) > ret:
+            ret = (cumsums[i] - cumsums[start]) - (cumsums[end-1] - cumsums[i])
             ret_idx = i
 
     return (ret, ret_idx)
@@ -31,7 +31,7 @@ def main():
         f2, idx2 = find(cumsums, i, n+1)
         if f1 + f2 > out:
             out = f1 + f2
-            idxs = (f1, i, f2)
+            idxs = (idx1, i, idx2)
 
     print(*idxs)
 
