@@ -47,20 +47,21 @@ def convert(s):
 def main():
     t9_dict = defaultdict(list)
 
-    for i, line in enumerate(fileinput.input()):
-        if i == 0:
-            n, k = (int(x) for x in line.split())
+    n, k = (int(x) for x in input().split())
 
-        elif i <= n:
-            t9_dict[convert(line.strip())].append(line.strip())
+    for _ in range(n):
+        w = input().strip()
+        t9_dict[convert(w)].append(w)
 
+    for _ in range(k):
+        w = input().strip()
+
+        r = t9_dict.get(w)
+
+        if r is None:
+            print("EMPTY")
         else:
-            r = t9_dict.get(line.strip())
-
-            if r is None:
-                print("EMPTY")
-            else:
-                print(" ".join(r))
+            print(" ".join(sorted(r)))
 
 
 if __name__ == "__main__":
