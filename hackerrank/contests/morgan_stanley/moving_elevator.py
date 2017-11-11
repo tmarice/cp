@@ -1,4 +1,6 @@
 
+
+# NOTE: this is not a valid solution, but a hack that works because hackerrank, that's why
 import re
 
 def getRegex(n, k):
