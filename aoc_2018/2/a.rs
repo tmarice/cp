@@ -14,16 +14,27 @@ fn main() {
 	for s in split {
 		let mut letters: [u8; 26] = [0; 26];
 		for c in s.chars() {
-			let x: i32 = c as i32 - 'a' as i32;
-			letters[x] += 1;
+			let mut x: u8= c as u8 - 'a' as u8;
+			letters[x as usize] += 1;
 		}
+
+		/*
+		println!("{}", s);
+		println!("{:#?}", letters);
+		break;
+		*/
 
 		for i in 0..26 {
 			if letters[i] == 2 {
 				twos += 1;
+				break;
 			}
+		}
+		
+		for i in 0..26 {
 			if letters[i] == 3 {
 				threes += 1;
+				break;
 			}
 		}
 
